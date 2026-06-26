@@ -405,70 +405,78 @@ function addProjectIndex(slot) {
   const projects = [
     {
       num: '01',
-      title: 'iM BANK',
-      desc: '3D Character · BX Contents',
+      title: 'TIDE',
+      desc: 'Ai Branding / Product',
       image: 'assets/images/project-01.png',
-      target: '#page-03'
+      target: '#page-03',
+      imgX: 200,
+      textX: 200
     },
     {
       num: '02',
-      title: 'FUBON HYUNDAI LIFE',
-      desc: '3D Character · SNS Contents',
+      title: 'DAYMINE',
+      desc: 'Branding / Product',
       image: 'assets/images/project-02.png',
-      target: '#page-18'
+      target: '#page-18',
+      imgX: 469,
+      textX: 469
     },
     {
       num: '03',
-      title: 'BINGGRAE POP-UP STORE',
-      desc: 'Pop-up Store · Promotion Design',
+      title: 'WINKLE',
+      desc: 'Branding / Product / Character',
       image: 'assets/images/project-03.png',
-      target: '#page-36'
+      target: '#page-36',
+      imgX: 738,
+      textX: 738
     },
     {
       num: '04',
-      title: 'SAMJJEOMSAM POP-UP STORE',
-      desc: 'Pop-up Store · Graphic Design',
+      title: 'KIMCHI SAUCE',
+      desc: 'Product / Retail',
       image: 'assets/images/project-04.png',
-      target: '#page-54'
+      target: '#page-54',
+      imgX: 1007,
+      textX: 1007
     },
     {
       num: '05',
-      title: 'DAIMINE',
-      desc: 'Brand · Package Design',
+      title: 'BPT',
+      desc: 'Rebranding',
       image: 'assets/images/project-05.png',
-      target: '#page-66'
+      target: '#page-66',
+      imgX: 1276,
+      textX: 1276
     },
     {
       num: '06',
-      title: 'WINKLE',
-      desc: 'Zero Drink Brand · Package',
+      title: 'Binggrae',
+      desc: 'Pop-up store',
       image: 'assets/images/project-06.png',
-      target: '#page-79'
+      target: '#page-79',
+      imgX: 1546,
+      textX: 1545
     }
   ];
 
-  const overlay = document.createElement('div');
-  overlay.className = 'project-index-overlay';
+  const layer = document.createElement('div');
+  layer.className = 'page02-project-layer';
 
-  overlay.innerHTML = `
-    <div class="project-index-head">
-      <p class="project-index-label">PROJECT INDEX</p>
-      <h2>SELECTED<br />PROJECTS</h2>
-    </div>
+  projects.forEach((project) => {
+    const imgLeft = `${(project.imgX / 1920) * 100}%`;
+    const textLeft = `${(project.textX / 1920) * 100}%`;
 
-    <div class="project-grid">
-      ${projects.map(project => `
-        <a class="project-card" href="${project.target}">
-          <img src="${project.image}" alt="${project.title}" />
-          <div class="project-card-text">
-            <span>${project.num}</span>
-            <strong>${project.title}</strong>
-            <p>${project.desc}</p>
-          </div>
-        </a>
-      `).join('')}
-    </div>
-  `;
+    layer.innerHTML += `
+      <span class="page02-text page02-num" style="left:${textLeft};">${project.num}</span>
 
-  slot.appendChild(overlay);
+      <a class="page02-thumb" href="${project.target}" style="left:${imgLeft};">
+        <img src="${project.image}" alt="" />
+      </a>
+
+      <span class="page02-text page02-title" style="left:${textLeft};">${project.title}</span>
+      <span class="page02-text page02-desc" style="left:${textLeft};">${project.desc}</span>
+    `;
+  });
+
+  slot.appendChild(layer);
 }
