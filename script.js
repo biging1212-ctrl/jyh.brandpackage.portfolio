@@ -77,8 +77,8 @@ for (let i = 1; i <= TOTAL_PAGES; i++) {
   slot.className   = 'portfolio-slot';
   slot.dataset.index = i;
 
-  // page-02 gets anchor id for CONTACT nav link
-  if (i === 1) slot.id = 'page-02';
+  // 모든 페이지에 이동용 id 부여: page-02, page-03, page-18 ...
+slot.id = `page-${String(pageNum).padStart(2, '0')}`;
 
   // page number badge
   const numBadge = document.createElement('span');
@@ -86,6 +86,22 @@ for (let i = 1; i <= TOTAL_PAGES; i++) {
   numBadge.textContent = `${String(pageNum).padStart(2, '0')} / ${FINAL_PAGE_TOTAL}`;
   slot.appendChild(numBadge);
 
+  // ── PAGE 02: Project Index ──
+if (pageNum === 2) {
+  slot.classList.add('project-index-page');
+
+  const bg = document.createElement('img');
+  bg.className = 'project-index-bg loaded';
+  bg.src = 'assets/images/page-02.png';
+  bg.alt = '';
+  slot.appendChild(bg);
+
+  addProjectIndex(slot);
+
+  section.appendChild(slot);
+  continue;
+}
+  
 // ── PAGE 50: YouTube Video ──
 if (pageNum === 50) {
   slot.classList.add('youtube-page');
@@ -384,3 +400,75 @@ const navObserver = new IntersectionObserver(
 );
 
 trackedSections.forEach((s) => navObserver.observe(s));
+
+function addProjectIndex(slot) {
+  const projects = [
+    {
+      num: '01',
+      title: 'iM BANK',
+      desc: '3D Character · BX Contents',
+      image: 'assets/images/project-01.png',
+      target: '#page-03'
+    },
+    {
+      num: '02',
+      title: 'FUBON HYUNDAI LIFE',
+      desc: '3D Character · SNS Contents',
+      image: 'assets/images/project-02.png',
+      target: '#page-18'
+    },
+    {
+      num: '03',
+      title: 'BINGGRAE POP-UP STORE',
+      desc: 'Pop-up Store · Promotion Design',
+      image: 'assets/images/project-03.png',
+      target: '#page-36'
+    },
+    {
+      num: '04',
+      title: 'SAMJJEOMSAM POP-UP STORE',
+      desc: 'Pop-up Store · Graphic Design',
+      image: 'assets/images/project-04.png',
+      target: '#page-54'
+    },
+    {
+      num: '05',
+      title: 'DAIMINE',
+      desc: 'Brand · Package Design',
+      image: 'assets/images/project-05.png',
+      target: '#page-66'
+    },
+    {
+      num: '06',
+      title: 'WINKLE',
+      desc: 'Zero Drink Brand · Package',
+      image: 'assets/images/project-06.png',
+      target: '#page-79'
+    }
+  ];
+
+  const overlay = document.createElement('div');
+  overlay.className = 'project-index-overlay';
+
+  overlay.innerHTML = `
+    <div class="project-index-head">
+      <p class="project-index-label">PROJECT INDEX</p>
+      <h2>SELECTED<br />PROJECTS</h2>
+    </div>
+
+    <div class="project-grid">
+      ${projects.map(project => `
+        <a class="project-card" href="${project.target}">
+          <img src="${project.image}" alt="${project.title}" />
+          <div class="project-card-text">
+            <span>${project.num}</span>
+            <strong>${project.title}</strong>
+            <p>${project.desc}</p>
+          </div>
+        </a>
+      `).join('')}
+    </div>
+  `;
+
+  slot.appendChild(overlay);
+}
