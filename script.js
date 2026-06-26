@@ -450,7 +450,7 @@ function addProjectIndex(slot) {
     },
     {
       num: '06',
-      title: 'Binggrae',
+      title: 'BINGGRAE',
       desc: 'Pop-up store',
       image: 'assets/images/project-06.png',
       target: '#page-79',
