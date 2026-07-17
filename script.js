@@ -57,6 +57,15 @@ const TOTAL_PAGES = 82; // pages 2–83 (page 84 = closing HTML)
 const FINAL_PAGE_TOTAL = 84;
 const STORAGE_KEY = 'portfolio_slots';
 
+// MP4만 불러올 페이지
+const VIDEO_PAGES = new Set([
+  4, 6, 15, 22, 23,
+  27, 31, 35, 40, 47,
+  50, 52, 56, 58, 64,
+  68, 71, 72, 75, 77,
+  81, 83
+]);
+
 // ── Load saved slots from localStorage ──
 function loadSaved() {
   try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
@@ -119,12 +128,26 @@ if (pageNum === 2) {
 
   // ── Auto-load from assets folder ──
   const padded2 = String(pageNum).padStart(2, '0');
-  const padded3 = String(pageNum).padStart(3, '0');
-
-  const candidates = [
-  { type: 'image', src: `assets/images/page-${padded2}.png` },
-  { type: 'video', src: `assets/videos/page-${padded2}.mp4` },
-];
+  const candidates = VIDEO_PAGES.has(pageNum)
+  ? [
+      // 지정한 영상 페이지는 MP4만 확인
+      {
+        type: 'video',
+        src: `assets/videos/page-${padded2}.mp4`
+      }
+    ]
+  : [
+      // 나머지 페이지는 PNG를 먼저 확인하고,
+      // PNG가 없을 때만 MP4 확인
+      {
+        type: 'image',
+        src: `assets/images/page-${padded2}.png`
+      },
+      {
+        type: 'video',
+        src: `assets/videos/page-${padded2}.mp4`
+      }
+    ];
 
   function tryCandidate(index = 0) {
     if (index >= candidates.length) {
