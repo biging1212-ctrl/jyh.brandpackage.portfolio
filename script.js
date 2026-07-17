@@ -53,8 +53,8 @@
 })();
 
 // ── Config ──
-const TOTAL_PAGES = 88; // pages 2–89 (page 90 = closing HTML)
-const FINAL_PAGE_TOTAL = 90;
+const TOTAL_PAGES = 82; // pages 2–83 (page 84 = closing HTML)
+const FINAL_PAGE_TOTAL = 84;
 const STORAGE_KEY = 'portfolio_slots';
 
 // ── Load saved slots from localStorage ──
@@ -72,7 +72,7 @@ const section = document.getElementById('portfolio');
 const saved   = loadSaved();
 
 for (let i = 1; i <= TOTAL_PAGES; i++) {
-  const pageNum = i + 1; // pages 2–58
+  const pageNum = i + 1; // pages 2–83
   const slot    = document.createElement('div');
   slot.className   = 'portfolio-slot';
   slot.dataset.index = i;
@@ -99,33 +99,6 @@ if (pageNum === 2) {
   addProjectIndex(slot);
 
   section.appendChild(slot);
-  continue;
-}
-  
-// ── PAGE 50: YouTube Video ──
-if (pageNum === 50) {
-  slot.classList.add('youtube-page');
-
-  const videoWrap = document.createElement('div');
-  videoWrap.className = 'youtube-video-wrap';
-
-  const iframe = document.createElement('iframe');
-
-  iframe.src =
-    'https://www.youtube-nocookie.com/embed/9JKTAvEiiZU?rel=0&playsinline=1';
-
-  iframe.title = 'Portfolio YouTube Video';
-
-  iframe.allow =
-    'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-
-  iframe.allowFullscreen = true;
-
-  videoWrap.appendChild(iframe);
-  slot.appendChild(videoWrap);
-
-  section.appendChild(slot);
-
   continue;
 }
   
@@ -232,25 +205,6 @@ function handleFile(slot, zone, file, index) {
   };
   reader.readAsDataURL(file);
 }
-
-// 39페이지 영상의 소리만 조절
-const page39SoundObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      const video = entry.target;
-
-      if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
-        video.volume = 0.3;
-        video.muted = false;
-      } else {
-        video.muted = true;
-      }
-    });
-  },
-  {
-    threshold: [0, 0.6, 1]
-  }
-);
 
 // ── Render image or video inside slot ──
 function renderMedia(slot, zone, type, src) {
@@ -406,7 +360,7 @@ function addProjectIndex(slot) {
     {
       num: '01',
       title: 'TIDE',
-      desc: 'Ai Branding / Product',
+      desc: 'Branding / Product',
       image: 'assets/images/project-01.png',
       target: '#page-03',
       imgX: 200,
@@ -424,9 +378,9 @@ function addProjectIndex(slot) {
     {
       num: '03',
       title: 'WINKLE',
-      desc: 'Branding / Product / Character',
+      desc: 'Branding / Product',
       image: 'assets/images/project-03.png',
-      target: '#page-36',
+      target: '#page-34',
       imgX: 738,
       textX: 738
     },
@@ -435,25 +389,25 @@ function addProjectIndex(slot) {
       title: 'KIMCHI SAUCE',
       desc: 'Product / Retail',
       image: 'assets/images/project-04.png',
-      target: '#page-54',
+      target: '#page-49',
       imgX: 1007,
       textX: 1007
     },
     {
       num: '05',
-      title: 'BPT',
+      title: 'BPT (실무)',
       desc: 'Rebranding',
       image: 'assets/images/project-05.png',
-      target: '#page-66',
+      target: '#page-61',
       imgX: 1276,
       textX: 1276
     },
     {
       num: '06',
-      title: 'BINGGRAE',
+      title: '삼쩜삼 (실무)',
       desc: 'Pop-up store',
       image: 'assets/images/project-06.png',
-      target: '#page-79',
+      target: '#page-73',
       imgX: 1546,
       textX: 1545
     }
