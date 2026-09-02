@@ -77,15 +77,13 @@
 })();
 
 // ── Config ──
-const TOTAL_PAGES = 61; // pages 2–62 (page 63 = closing HTML)
-const FINAL_PAGE_TOTAL = 63;
+const TOTAL_PAGES = 59; // pages 2–60 (page 61 = closing HTML)
+const FINAL_PAGE_TOTAL = 61;
 const STORAGE_KEY = 'portfolio_slots';
 
 const VIDEO_PAGES = new Set([
-  4, 9, 19, 24, 25, 29,
-  32, 38, 40, 44, 48,
-  52, 55, 56, 59,
-  60, 61
+  4, 21, 22, 26, 29,
+  34, 39, 49, 53, 55, 59
 ]);
 
 // ── Load saved slots from localStorage ──
@@ -129,8 +127,8 @@ if (pageNum === 2) {
   continue;
 }
 
-  // ── PAGE 17: YouTube Video ──
-if (pageNum === 17) {
+  // ── PAGE 47: YouTube Video ──
+if (pageNum === 47) {
   slot.classList.add('youtube-page');
 
   const videoWrap = document.createElement('div');
@@ -408,13 +406,13 @@ function addProjectIndex(slot) {
     {
       num: '(01)',
       title: 'WINKLE',
-      desc: 'Beverage Branding',
+      desc: 'Beauty tech Branding & Package',
       image: 'assets/images/project-01.png',
       target: '#page-03',
 
       imgX: 200,
       imgY: 401,
-      imgW: 249,
+      imgW: 300,
       imgH: 263,
 
       numY: 366,
@@ -427,89 +425,58 @@ function addProjectIndex(slot) {
     {
       num: '(02)',
       title: 'DAYMINE',
-      desc: 'Health Care Branding',
+      desc: 'Health Care Branding & Package',
       image: 'assets/images/project-02.png',
-      target: '#page-21',
+      target: '#page-18',
 
-      imgX: 519,
+      imgX: 641,
       imgY: 401,
-      imgW: 249,
-      imgH: 405,
+      imgW: 300,
+      imgH: 406,
 
-      numX: 626,
       numY: 366,
 
-      titleX: 605,
       titleY: 828,
 
-      descX: 569,
       descY: 852
     },
 
     {
       num: '(03)',
-      title: '3.3',
-      desc: 'Pop - Up Store / 실무',
+      title: 'WINKLE',
+      desc: 'Beverage Branding & Package',
       image: 'assets/images/project-03.png',
-      target: '#page-36',
+      target: '#page-33',
 
-      imgX: 836,
+      imgX: 1028,
       imgY: 401,
-      imgW: 249,
+      imgW: 300,
       imgH: 263,
 
-      numX: 944,
       numY: 366,
 
-      titleX: 949,
       titleY: 686,
 
-      descX: 911,
       descY: 710
     },
 
     {
       num: '(04)',
-      title: 'BPT',
-      desc: 'Rebranding / 실무',
+      title: '3.3',
+      desc: 'Pop - Up Store / 실무',
       image: 'assets/images/project-04.png',
-      target: '#page-45',
+      target: '#page-51',
 
-      imgX: 1155,
+      imgX: 1442,
       imgY: 401,
-      imgW: 249,
-      imgH: 348,
+      imgW: 300,
+      imgH: 349,
 
-      numX: 1262,
       numY: 366,
 
-      titleX: 1251,
       titleY: 771,
 
-      descX: 1208,
       descY: 795
-    },
-
-    {
-      num: '(05)',
-      title: 'ORION',
-      desc: 'Promotion Contents / 실무',
-      image: 'assets/images/project-05.png',
-      target: '#page-57',
-
-      imgX: 1472,
-      imgY: 401,
-      imgW: 249,
-      imgH: 263,
-
-      numX: 1579,
-      numY: 366,
-
-      titleX: 1552,
-      titleY: 686,
-
-      descX: 1546,
-      descY: 710
     }
   ];
 
