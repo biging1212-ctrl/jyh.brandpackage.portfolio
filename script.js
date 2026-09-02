@@ -77,8 +77,8 @@
 })();
 
 // ── Config ──
-const TOTAL_PAGES = 59; // pages 2–60 (page 61 = closing HTML)
-const FINAL_PAGE_TOTAL = 61;
+const TOTAL_PAGES = 58; // pages 2–59 (page 60 = closing HTML)
+const FINAL_PAGE_TOTAL = 60;
 const STORAGE_KEY = 'portfolio_slots';
 
 const VIDEO_PAGES = new Set([
@@ -429,7 +429,7 @@ function addProjectIndex(slot) {
       image: 'assets/images/project-02.png',
       target: '#page-18',
 
-      imgX: 641,
+      imgX: 614,
       imgY: 401,
       imgW: 300,
       imgH: 406,
